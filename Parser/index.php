@@ -1,32 +1,15 @@
 <?php 
-require_once './Parser.php';
+// require_once './Models/BaseModel/Parser.php';
 
-$list = ["vietnamnet", "dantri", "vnexpress"];
+require_once './route.php';
 
-if ($_POST['url']) {
-    // Parser url to get website name
-    $url = $_POST['url'];
-    $arrayUrl = explode("/", $url);
-    $website = explode(".",$arrayUrl[2]);
 
-    //return back if website it not on available list
-    if (!in_array($website[0], $list)) {
-        header('Location: ' . $_SERVER['HTTP_REFERER'].'?error=notinlist');
-    }
-
-    // Call class
-    $class = $website[0].'Parser';
-    require_once $class.'.php';
-    $parser = new $class($url);
-    
-    //Get data
-    $title = $parser->getTittle();
-    $date = $parser->getDate();
-    $content = $parser->getContent();
-
-    echo $arrayUrl[2];
+if(!$_POST['url'] || !$_GET['action']){
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
+$route = new route($_GET['controller'], $_GET['action']);
+$route->excecute();
 ?>
 
 <!DOCTYPE html>

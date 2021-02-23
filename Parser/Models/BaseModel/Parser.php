@@ -1,5 +1,5 @@
 <?php 
-
+echo "base model";
 class Parser
 {
     protected $regexTitleStart;

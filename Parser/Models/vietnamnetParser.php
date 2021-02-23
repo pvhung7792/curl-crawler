@@ -1,6 +1,5 @@
 <?php 
-
-require_once "./Parser.php";
+require_once './Models/BaseModel/Parser.php';
 
 class vietnamnetParser extends Parser
 {
