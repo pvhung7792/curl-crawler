@@ -1,0 +1,129 @@
+VN express
+
+ //regex for title
+$regexTitle = '/class="title-detail">/';
+
+//Get title
+$title = preg_substr($regexTitle,'</h1>',$str);
+echo $title;
+
+//get only article content
+$article = preg_substr('/class="fck_detail/',"/article>/",$str);
+
+//regex for content
+$startContentRegex = '/class="Normal">/';
+// $endContentRegex = '/'.'p'.'>/';
+$endContentRegex = '/</p>/';
+
+//get content
+$content = multi_preg_substr($startContentRegex,$endContentRegex,$article);
+foreach($content as $cont){
+    echo $cont."<br><br>";
+}
+
+//regex for date
+$startDateRegex = '/class="date">/';
+$endDateRegex = '/span>/';
+
+//Get date
+$date = preg_substr($startDateRegex,$endDateRegex,$str);
+echo $date;
+
+
+--------------------------------------------------
+
+vietnamnet
+
+//title
+<h1 class="title f-22 c-3e">
+    Bí thư Hải Dương: 'Còn 8 ngày vàng để kiểm soát dịch bệnh'
+</h1>
+
+//date
+<span class="ArticleDate">
+    22/02/2021 &nbsp;&nbsp; 21:24 GMT+7
+</span>
+
+//content
+<span class="pop" style="display: none;">
+        **********
+<div class="button-load-more">
+
+//regex for title
+$regexTitle = '/class="title f-22 c-3e">/';
+
+//Get title
+$title = preg_substr($regexTitle,'<h1>',$str);
+echo $title;
+
+//get only article content
+$article = preg_substr('/class="pop/','/class="button-load-more"/',$str);
+
+//regex for content
+$startContentRegex = '/class="lead">/';
+$endContentRegex = '/'.'p'.'>/';
+$endContentRegex = '/</p>/';
+
+//get content
+$content = multi_preg_substr($startContentRegex,$endContentRegex,$article);
+foreach($content as $cont){
+    echo $cont."<br><br>";
+}
+
+//regex for date
+$startDateRegex = '/class="ArticleDate">/';
+$endDateRegex = '/span>/';
+
+//Get date
+$date = preg_substr($startDateRegex,$endDateRegex,$str);
+echo $date;
+
+-----------------------------------------------------
+dantri
+//title
+<h1 class="dt-news__title">
+    Khởi tố vụ án làm lây lan dịch Covid-19 ở Thành phố Hải Dương
+</h1>
+
+//date
+<div class="dt-news__meta">
+    <span class="dt-news__time">Thứ hai, 22/02/2021 - 18:01</span>
+</div>
+
+
+//content
+<div class="dt-news__body">
+<div class="dt-news__sapo">
+    <span>Dân trí</span><h2> Ông Phùng Anh Lê - Trưởng Phòng cảnh sát kinh tế Công an TP Hà Nội đã bị đình chỉ công tác để phục vụ quá trình điều tra vụ án do Viện KSND Tối cao thực hiện.</h2>
+</div>
+********************
+<div data-tin-lien-quan></div>
+
+//regex for title
+$regexTitle = '/class="dt-news__title">/';
+
+//Get title
+$title = preg_substr($regexTitle,'<h1>',$str);
+echo $title;
+
+//get only article content
+$article = preg_substr('/class="dt-news__body"/','/data-tin-lien-quan/',$str);
+
+//regex for content
+$startContentRegex = '/p>/';
+$endContentRegex = '/'.'p'.'>/';
+$endContentRegex = '/</p>/';
+
+//get content
+$content = multi_preg_substr($startContentRegex,$endContentRegex,$article);
+foreach($content as $cont){
+    echo $cont."<br><br>";
+}
+
+//regex for date
+$startDateRegex = '/class="dt-news__time">/';
+$endDateRegex = '/span>/';
+
+//Get date
+$date = preg_substr($startDateRegex,$endDateRegex,$str);
+echo $date;
