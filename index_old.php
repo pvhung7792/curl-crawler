@@ -45,57 +45,6 @@ function writelog($str)
   fclose($open);
 } 
 
-function getImage($url, $filename='', $dirName, $fileType, $type=0)
-{
-
-    if($url == ''){return false;}
-    //get the default file name
-    $defaultFileName = basename($url);
-    //file type
-    $suffix = substr(strrchr($url,'.'), 1);
-
-    if(!in_array($suffix, $fileType)){
-    return false;
-}
-
-//set the file name
-
-$filename = $filename == '' ? time().rand(0,9).'.'.$suffix : $defaultFileName;
-//get remote file resource
-
-    if($type){
-
-        $ch = curl_init();
-        $timeout = 5;
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-        $file = curl_exec($ch);
-        curl_close($ch);
-    }else{
-        ob_start();
-        readfile($url);
-        $file = ob_get_contents();
-        ob_end_clean();
-}
-
-    //set file path
-
-    $dirName = $dirName.'/'.date('Y', time()).'/'.date('m', time()).'/'.date('d',time()).'/';
-
-    if(!file_exists($dirName)){
-        mkdir($dirName, 0777, true);
-    }
-
-    //save file
-
-    $res = fopen($dirName.$filename,'a');
-    fwrite($res,$file);
-    fclose($res);
-
-    return $dirName.$filename;
-
-}
 //---------------------------------------------------------
 
 
@@ -150,20 +99,3 @@ $filename = $filename == '' ? time().rand(0,9).'.'.$suffix : $defaultFileName;
     }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<form method="POST">
-    <label for="">Available website : VnExpress, VietNamNet, DanTri</label>
-    <input type="text" name="URL">
-    <button>Get content</button>
-</form>
-</body>
-</html>

@@ -1,9 +1,3 @@
-<?php 
-
-require_once './Parser/Parser.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +7,13 @@ require_once './Parser/Parser.php';
     <title>Get content</title>
 </head>
 <body>
-<form method="POST">
+<form method="POST" action="./Parser/index.php">
     <label for="">Available website : VnExpress, VietNamNet, DanTri</label>
-    <input type="text" name="URL">
+    <input type="text" name="url">
     <button>Get content</button>
+    <?php if(isset($_GET['error'])): ?>
+        <p style="color:red"><?= $_GET['error']; ?></p>
+    <?php endif ?>
 </form>
 </body>
 </html>

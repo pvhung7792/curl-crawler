@@ -15,6 +15,7 @@ class Parser
     protected $regexEndDate;
 
     protected $str;
+
     // Contructor function get data form website
     public function __construct($url)
     {
@@ -23,6 +24,20 @@ class Parser
         curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
         $this->str = curl_exec($ch);
         curl_close($ch);
+    }
+
+    // Gather data
+    public function getData()
+    {
+        $title = $this->getTitle();
+        $date = $this->getDate();
+        $content = $this->getContent();
+
+        return $data = [
+            'title'=> $title,
+            'date'=> $date,
+            'content'=> $content
+        ];
     }
 
     // get website title

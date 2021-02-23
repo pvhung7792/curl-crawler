@@ -2,10 +2,10 @@
 
 require_once "./Parser.php";
 
-class DanTriParser extends Parser
+class dantriParser extends Parser
 {
     protected $regexTitleStart = '/class="dt-news__title">/';
-    protected $regexTitleEnd = '<h1>';
+    protected $regexTitleEnd = '/h1>/';
 
     protected $regexArticleStart = '/class="dt-news__body"/';
     protected $regexArticleEnd = '/data-tin-lien-quan/';
