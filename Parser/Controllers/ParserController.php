@@ -19,7 +19,7 @@ class ParserController
             header('Location: ' . $_SERVER['HTTP_REFERER'].'?error=notinlist');
         }
         
-        // Call class
+        // Call class base on website
         $class = $website[0].'Parser';
         require_once './Models/'.$class.'.php';
         $parser = new $class($url);
