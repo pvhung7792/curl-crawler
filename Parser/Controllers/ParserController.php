@@ -24,13 +24,15 @@ class ParserController
         require_once './Models/'.$class.'.php';
         $parser = new $class($url);
 
-        //Get data
-        $title = $parser->getTittle();
-        $date = $parser->getDate();
-        $content = $parser->getContent();
 
-        var_dump($content);
+        //Get data and put in session
+        $_SESSION['link'] = $url;
+        $_SESSION['title'] = $parser->getTittle();
+        $_SESSION['date'] = $parser->getDate();
+        $_SESSION['content'] = $parser->getContent();
 
+        //redirect back
+        header('Location: http://localhost/demo/PhpCrawler/');
     }   
 
 }

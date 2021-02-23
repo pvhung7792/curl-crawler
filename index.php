@@ -1,3 +1,10 @@
+
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,23 +18,35 @@
     <label for="">Available website : VnExpress, VietNamNet, DanTri</label>
     <input type="text" name="url">
     <button>Get content</button>
+
+    <!-- show error -->
     <?php if(isset($_GET['error'])): ?>
         <p style="color:red"><?= $_GET['error']; ?></p>
     <?php endif ?>
-    <?php if(isset($title)): ?>
+    
+    <!-- Show link -->
+    <?php if(isset($_SESSION['link'])): ?>
+        <h4>Link</h4>
+        <p><?= $_SESSION['link'] ?></p>
+    <?php endif ?>
+
+    <!-- Show title -->
+    <?php if(isset($_SESSION['title'])): ?>
         <h4>Title</h4>
-        <p><?= $title ?></p>
+        <p><?= $_SESSION['title'] ?></p>
     <?php endif ?>
+
     <!-- Show date -->
-    <?php if(isset($date)): ?>
+    <?php if($_SESSION['date']): ?>
         <h4>Date</h4>
-        <p><?= $date ?></p>
+        <p><?= $_SESSION['date'] ?></p>
     <?php endif ?>
+
     <!-- Show content -->
-    <?php if(isset($content)): ;?>
+    <?php if($_SESSION['content']): ;?>
         <h4>Content</h4>
-        <?php foreach($content as $contentDetail): ?>
-        <p><?= $contentDetail ?></p>
+        <?php foreach($_SESSION['content'] as $content): ?>
+        <p><?= $content ?></p>
         <?php endforeach ;?>
     <?php endif ;?>
 </form>
