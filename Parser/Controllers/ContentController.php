@@ -1,5 +1,5 @@
 <?php 
-require_once './Utility/page_data_tb.php';
+require_once './Utility/pageData.php';
 
 class ContentController
 {
@@ -7,7 +7,7 @@ class ContentController
 
     public function __construct()
     {
-        $this->table = new page_data_tb();
+        $this->table = new pageData();
     }
     
     public function storeContent()

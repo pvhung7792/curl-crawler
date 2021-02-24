@@ -2,7 +2,7 @@
 require_once './Utility/Basetable/Table.php';
 
 
-class page_data_tb extends Table 
+class pageData extends Table 
 {
     protected $table = "page_data_tb";
 
