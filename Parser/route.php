@@ -4,7 +4,7 @@ class route
     private $action;
     private $controller;
 
-    public function __construct($controller, $action)
+    public function __construct($controller, $action, $data = '')
     {   
         $this->controller = $controller;
         $this->action = $action;

@@ -1,5 +1,6 @@
 <?php 
-echo "base model";
+
+
 class Parser
 {
     protected $regexTitleStart;
@@ -16,16 +17,6 @@ class Parser
 
     protected $str;
 
-    // Contructor function get data form website
-    public function __construct($url)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-        $this->str = curl_exec($ch);
-        curl_close($ch);
-    }
-
     // Gather data
     public function getData()
     {
@@ -41,13 +32,13 @@ class Parser
     }
 
     // get website title
-    public function getTittle():string
+    public function getTittle()
     {
         return $this->preg_substr($this->regexTitleStart, $this->regexTitleEnd, $this->str);
     }
 
     // get publish date of website
-    public function getDate():string
+    public function getDate()
     {
         return $this->preg_substr($this->regexStartDate, $this->regexEndDate, $this->str);
     }
@@ -60,7 +51,7 @@ class Parser
     }
 
     // get main content from website
-    protected function getArticle():string
+    protected function getArticle()
     {
         return $this->preg_substr($this->regexArticleStart, $this->regexArticleEnd, $this->str);
     }

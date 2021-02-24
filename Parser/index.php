@@ -12,6 +12,7 @@ if(!$_POST['url'] || !$_GET['action']){
 }
 
 //creat router get uri to pass on router
-$route = new route($_GET['controller'], $_GET['action']);
+$route = new route($_GET['controller'], $_GET['action'], $_POST);
 $route->excecute();
+
 ?>
