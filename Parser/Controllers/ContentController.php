@@ -22,7 +22,7 @@ class ContentController
         session_unset();
 
         //redirect back to main page
-        header('Location: http://localhost/demo/PhpCrawler/?succcess="them_du_lieu_thanh_cong"');
+        header('Location: http://localhost/demo/PhpCrawler/?succcess=them_du_lieu_thanh_cong');
     }
 
 }
