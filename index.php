@@ -17,38 +17,50 @@ session_start();
 <form method="POST" action="./Parser/index.php?controller=Parser&action=parserData">
     <label for="">Available website : VnExpress, VietNamNet, DanTri</label>
     <input type="text" name="url">
-    <button>Get content</button>
+    <button>Get content</button><br>
 
     <!-- show error -->
     <?php if(isset($_GET['error'])): ?>
         <p style="color:red"><?= $_GET['error']; ?></p>
     <?php endif ?>
+    <?php if(isset($_GET['succcess'])): ?>
+        <p style="color:green"><?= $_GET['succcess']; ?></p>
+    <?php endif ?>
+</form>
     
+<form action="./Parser/index.php?controller=Content&action=storeContent" method="POST">
+    <button type="submit">Save</button>
+
     <!-- Show link -->
     <?php if(isset($_SESSION['link'])): ?>
         <h4>Link</h4>
-        <p><?= $_SESSION['link'] ?></p>
+        <input type="text" name="link" value="<?= $_SESSION['link'] ?>">
     <?php endif ?>
 
     <!-- Show title -->
     <?php if(isset($_SESSION['title'])): ?>
         <h4>Title</h4>
-        <p><?= $_SESSION['title'] ?></p>
+        <input type="text" name="title" value="<?= $_SESSION['title'] ?>">
     <?php endif ?>
 
     <!-- Show date -->
     <?php if($_SESSION['date']): ?>
         <h4>Date</h4>
-        <p><?= $_SESSION['date'] ?></p>
+        <input type="text" name="date" value="<?= $_SESSION['date'] ?>">
     <?php endif ?>
 
     <!-- Show content -->
     <?php if($_SESSION['content']): ;?>
         <h4>Content</h4>
-        <?php foreach($_SESSION['content'] as $content): ?>
-        <p><?= $content ?></p>
-        <?php endforeach ;?>
+        
+        <textarea name="content" cols="140" rows="70">
+            <?php foreach($_SESSION['content'] as $content): ?>
+                <?php echo $content ?>
+            <?php endforeach ;?>
+        </textarea>
+
     <?php endif ;?>
+
 </form>
 </body>
 </html>

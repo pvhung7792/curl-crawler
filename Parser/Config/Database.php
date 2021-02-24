@@ -14,7 +14,12 @@ class MySQLConnection implements Database
 
     public function connectToDatabase()
     {
-        return new mysqli($this->host,$this->user,$this>password,$this->database);
+        $mysqli = new mysqli($this->host,$this->user,$this->password,$this->database);
+        if ($mysqli -> connect_errno) {
+            echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+            exit();
+        }
+        return $mysqli;
     }
 }
 

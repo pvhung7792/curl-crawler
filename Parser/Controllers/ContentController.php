@@ -1,21 +1,21 @@
 <?php 
-require_once './Config/Database.php';
+require_once './Utility/page_data_tb.php';
 
 class ContentController
 {
-    private $dbConnect;
-    public function __construct(){
-        $this->dbConnect = 
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = new page_data_tb();
     }
     
     public function storeContent()
     {
-
-    }
-
-    public function getContent()
-    {
-
+        $data = $_POST;
+        $this->table->store($data);
+        session_unset();
+        header('Location: http://localhost/demo/PhpCrawler/?succcess="them_du_lieu_thanh_cong"');
     }
 
 }

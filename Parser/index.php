@@ -6,11 +6,11 @@ require_once './route.php';
 session_start();
 
 //redirect back if no data input
-if(!$_POST['url'] || !$_GET['action']){
+if(!$_GET['action']){
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
-//creat router get uri to pass on router
+//create router get uri to pass on router
 $route = new route($_GET['controller'], $_GET['action'], $_POST);
 $route->excecute();
 

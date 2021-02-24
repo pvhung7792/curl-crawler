@@ -38,13 +38,16 @@ class Parser
     // get website title
     public function getTittle()
     {
-        return $this->preg_substr($this->regexTitleStart, $this->regexTitleEnd, $this->str);
+        $temp = $this->preg_substr($this->regexTitleStart, $this->regexTitleEnd, $this->str);
+        $title = substr($temp, 0 ,-2);  
+        return $title;
     }
-
     // get publish date of website
     public function getDate()
     {
-        return $this->preg_substr($this->regexStartDate, $this->regexEndDate, $this->str);
+        $temp = $this->preg_substr($this->regexStartDate, $this->regexEndDate, $this->str);
+        $date = substr($temp, 0 ,-2);  
+        return $date;
     }
 
     // Parser maincontent to get text only
@@ -65,7 +68,7 @@ class Parser
     {      
         $temp = preg_split($start, $str);    
         $content = preg_split($end, $temp[1]);      
-        return $content[0];      
+        return trim($content[0]);      
     } 
 
     //get multiple string from website
@@ -74,7 +77,7 @@ class Parser
         $content = [];
         $temp = preg_split($start, $str);   
         for($i =1; $i < count($temp); $i++){
-            $content[] = strip_tags($temp[$i]);
+            $content[] = trim(strip_tags($temp[$i]));
         }
         return $content;      
     }  
