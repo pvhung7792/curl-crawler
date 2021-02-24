@@ -1,8 +1,10 @@
 <?php 
+require_once './lib/Crawler.php';
 
 class ParserController
 {
     private  $list = ["vietnamnet", "dantri", "vnexpress"];
+
 
     public function __construct()
     {
@@ -18,11 +20,13 @@ class ParserController
         if (!in_array($website[0], $this->list)) {
             header('Location: ' . $_SERVER['HTTP_REFERER'].'?error=notinlist');
         }
-        
         // Call class base on website
         $class = $website[0].'Parser';
         require_once './Models/'.$class.'.php';
-        $parser = new $class($url);
+
+        //change crawler method here
+        $crawler = new CurlCrawler();
+        $parser = new $class($url, $crawler);
 
 
         //Get data and put in session

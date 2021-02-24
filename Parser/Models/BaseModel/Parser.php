@@ -1,6 +1,5 @@
 <?php 
 
-
 class Parser
 {
     protected $regexTitleStart;
@@ -16,6 +15,11 @@ class Parser
     protected $regexEndDate;
 
     protected $str;
+
+    public function __construct($url, $crawler)
+    {
+        $this->str = $crawler->crawlData($url);
+    }
 
     // Gather data
     public function getData()
