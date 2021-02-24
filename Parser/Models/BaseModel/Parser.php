@@ -64,26 +64,26 @@ class Parser
     }
     
      // get single string from website 
-     protected function preg_substr($start, $end, $html)   
-     {      
-         $temp = preg_split($start, $html);    
-         $content = preg_split($end, $temp[1]);      
-         return trim($content[0]);      
-     } 
- 
-     //get multiple string from website
-     protected function multi_preg_substr($start, $end, $html)    
-     {      
-         $content = [];
-         $temp = preg_split($start, $html);   
-         for($i =1; $i < count($temp); $i++){
-             $text = trim(strip_tags($temp[$i]));
-             if (!$text=="") {
-                $content[] = $text;
-             }
-         }
-         return $content;      
-     }  
+    protected function preg_substr($start, $end, $html)   
+    {      
+        $temp = preg_split($start, $html);    
+        $content = preg_split($end, $temp[1]);      
+        return trim($content[0]);      
+    } 
+
+    //get multiple string from website
+    protected function multi_preg_substr($start, $end, $html)    
+    {      
+        $content = [];
+        $temp = preg_split($start, $html);   
+        for($i =1; $i < count($temp); $i++){
+            $text = trim(strip_tags($temp[$i]));
+            if (!$text=="") {
+            $content[] = $text;
+            }
+        }
+        return $content;      
+    }  
 }
 
 

@@ -18,7 +18,7 @@ class ParserController
 
         //return back if website it not on available list
         if (!in_array($website[0], $this->list)) {
-            header('Location: ' . $_SERVER['HTTP_REFERER'].'?error=notinlist');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
         // Call class base on website
         $class = $website[0].'Parser';
@@ -35,9 +35,23 @@ class ParserController
         $_SESSION['date'] = $parser->getDate();
         $_SESSION['content'] = $parser->getContent();
 
+        $data = [
+            'link'=> $url,
+            'title'=>$parser->getTittle(),
+            'date'=>$parser->getDate(),
+            'content'=>$parser->getContent()
+        ];
         //redirect back
-        header('Location: http://localhost/demo/PhpCrawler/');
+        // header('Location: http://localhost/demo/PhpCrawler/');
+
+        $this->view($data);
     }   
+
+    public function view($data)
+    {
+        $data = $data;
+        require_once './Views/viewContent.php';
+    }
 
 }
 
