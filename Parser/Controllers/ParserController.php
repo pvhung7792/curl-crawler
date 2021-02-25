@@ -1,10 +1,10 @@
 <?php 
 require_once './lib/Crawler.php';
+require_once './Controllers/BaseController/Controller.php';
 
-class ParserController
+class ParserController extends Controller
 {
     private  $list = ["vietnamnet", "dantri", "vnexpress"];
-
 
     public function __construct()
     {
@@ -28,32 +28,17 @@ class ParserController
         $crawler = new CurlCrawler();
         $parser = new $class($url, $crawler);
 
-
-        //Get data and put in session
-        $_SESSION['link'] = $url;
-        $_SESSION['title'] = $parser->getTittle();
-        $_SESSION['date'] = $parser->getDate();
-        $_SESSION['content'] = $parser->getContent();
-
         $data = [
             'link'=> $url,
             'title'=>$parser->getTittle(),
             'date'=>$parser->getDate(),
             'content'=>$parser->getContent()
         ];
-        //redirect back
-        // header('Location: http://localhost/demo/PhpCrawler/');
 
-        $this->view($data);
+        // return view
+        $this->view(viewContent ,$data);
     }   
-
-    public function view($data)
-    {
-        $data = $data;
-        require_once './Views/viewContent.php';
-    }
 
 }
 
 
-?>

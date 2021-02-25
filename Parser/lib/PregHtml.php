@@ -1,9 +1,15 @@
 <?php
 
-class PregHtml
+interface PregHtml
+{
+    public  function preg_substr($start, $end, $html);
+    public  function multi_preg_substr($start, $end, $html);
+}
+
+class PregHtml1 implements PregHtml
 {
     // get single string from website 
-    protected function preg_substr($start, $end, $html)   
+    public function preg_substr($start, $end, $html)
     {      
         $temp = preg_split($start, $html);    
         $content = preg_split($end, $temp[1]);      
@@ -11,7 +17,7 @@ class PregHtml
     } 
 
     //get multiple string from website
-    protected function multi_preg_substr($start, $end, $html)    
+    public function multi_preg_substr($start, $end, $html)
     {      
         $content = [];
         $temp = preg_split($start, $html);   

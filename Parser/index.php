@@ -3,9 +3,6 @@
 require_once './Config/Config.php';
 require_once './route.php';
 
-//start session
-session_start();
-
 //redirect back if no data input
 if(!$_GET['action']){
     header('Location: ' . $_SERVER['HTTP_REFERER']);

@@ -18,9 +18,6 @@ class ContentController
         //store data
         $this->table->store($data);
 
-        //unset session
-        session_unset();
-
         //redirect back to main page
         header('Location: http://localhost/demo/PhpCrawler/');
     }

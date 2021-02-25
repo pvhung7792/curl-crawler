@@ -1,10 +1,4 @@
 
-<?php 
-
-session_start();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +11,7 @@ session_start();
 <form method="POST" action="./Parser/index.php?controller=Parser&action=parserData">
     <label for="">Available website : VnExpress, VietNamNet, DanTri</label>
     <input type="text" name="url">
-    <button>Get content</button><br>
+    <button>Get content</button>
 </form>
 </body>
 </html>

@@ -3,6 +3,7 @@ interface Crawler
 {
     public function crawlData($url);
 }
+
 class CurlCrawler implements Crawler
 {
     public function crawlData($url)
