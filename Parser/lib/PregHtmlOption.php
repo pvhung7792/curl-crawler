@@ -6,15 +6,15 @@ interface PregHtml
     public  function multi_preg_substr($start, $end, $html);
 }
 
-class PregHtml1 implements PregHtml
+class PregHtmlForNews implements PregHtml
 {
     // get single string from website 
     public function preg_substr($start, $end, $html)
-    {      
-        $temp = preg_split($start, $html);    
-        $content = preg_split($end, $temp[1]);      
-        return trim($content[0]);      
-    } 
+    {
+        $temp = preg_split($start, $html);
+        $content = preg_split($end, $temp[1]);
+        return substr(trim($content[0]), 0 ,-2);
+    }
 
     //get multiple string from website
     public function multi_preg_substr($start, $end, $html)
@@ -28,4 +28,3 @@ class PregHtml1 implements PregHtml
     }  
 }
 
-?>

@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 require_once './Models/BaseModel/Parser.php';
 
 class vnexpressParser extends Parser

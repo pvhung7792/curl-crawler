@@ -8,6 +8,7 @@ class ParserController extends Controller
 
     public function __construct()
     {
+
     }
 
     public function parserData(){
@@ -20,17 +21,20 @@ class ParserController extends Controller
         if (!in_array($website[0], $this->list)) {
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
+
         // Call class base on website
-        $class = $website[0].'Parser';
-        require_once './Models/'.$class.'.php';
+        $web = $website[0].'Parser';
+
+        require_once './Models/'.$web.'.php';
 
         //change crawler method here
         $crawler = new CurlCrawler();
-        $parser = new $class($url, $crawler);
+
+        $parser = new $web($url, $crawler, PregHtmlForNews);
 
         $data = [
             'link'=> $url,
-            'title'=>$parser->getTittle(),
+            'title'=>$parser->getTitle(),
             'date'=>$parser->getDate(),
             'content'=>$parser->getContent()
         ];

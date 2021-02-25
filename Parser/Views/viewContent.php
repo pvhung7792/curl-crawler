@@ -12,7 +12,7 @@
 
 <form action="./index.php?controller=Content&action=storeContent" method="POST">
     <button type="submit">Save</button>
-
+    <button type="button"><a href="../">Return</a></button>
     <!-- Show link -->
     <?php if(isset($data['link'])): ?>
         <h4>Link</h4>
