@@ -8,9 +8,9 @@
     <title>Get content</title>
 </head>
 <body>
-<form method="POST" action="./Parser/index.php?controller=Parser&action=parserData">
-    <label for="">Available website : VnExpress, VietNamNet, DanTri</label>
-    <input type="text" name="url">
+<form method="POST" action="Public/index.php?controller=Parser&action=parserData">
+    <label for="">Available website : VnExpress, VietNamNet, DanTri</label><br>
+    <input type="text" name="url" style="width: 900px"><br>
     <button>Get content</button>
 </form>
 </body>

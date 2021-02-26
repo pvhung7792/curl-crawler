@@ -12,7 +12,8 @@ class route
 
     public function excecute()
     {
-        
+        $route = new route($_GET['controller'], $_GET['action'], $_POST);
+
         // Call controller base on uri
         $controllerName = $this->controller.'Controller';
         

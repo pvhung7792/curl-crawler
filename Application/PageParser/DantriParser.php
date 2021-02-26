@@ -1,7 +1,7 @@
-<?php 
-require_once './Models/BaseModel/Parser.php';
+<?php
+require_once '../Application/Libs/Parser.php';
 
-class dantriParser extends Parser
+class DantriParser extends Parser
 {
     protected $regexTitleStart = '/class="dt-news__title">/';
     protected $regexTitleEnd = '/h1>/';

@@ -10,7 +10,7 @@
 <body>
 
 
-<form action="./index.php?controller=Content&action=storeContent" method="POST">
+<form action="../Public/index.php?controller=Content&action=storeContent" method="POST">
     <button type="submit">Save</button>
     <button type="button"><a href="../">Return</a></button>
     <!-- Show link -->
@@ -28,7 +28,7 @@
     <?php endif ?>
 
     <!-- Show date -->
-    <?php if($data['date']): ?>
+    <?php if(isset($data['date'])): ?>
         <h4>Date</h4>
         <input type="text" name="date" value="<?= $data['date'] ?>" hidden>
         <p><?= $data['date'] ?></p>

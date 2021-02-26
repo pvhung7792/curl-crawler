@@ -1,10 +1,10 @@
-<?php 
-require_once './Utility/Basetable/Table.php';
+<?php
+require_once '../Application/Core/Table.php';
 
 
-class pageData extends Table 
+class PageData extends Table
 {
-    protected $table = "page_data_tb";
+    private $table = "page_data_tb";
 
     public function store($data)
     {
@@ -18,7 +18,8 @@ class pageData extends Table
             echo "Unable to insert data!";
             exit();
         }
+
+        return true;
     }
 }
 
-?>

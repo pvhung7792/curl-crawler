@@ -1,7 +1,7 @@
-<?php 
-require_once './Models/BaseModel/Parser.php';
+<?php
+require_once '../Application/Libs/Parser.php';
 
-class vietnamnetParser extends Parser
+class VietnamnetParser extends Parser
 {
     protected $regexTitleStart = '/class="title f-22 c-3e">/';
     protected $regexTitleEnd = '/h1>/';

@@ -1,8 +1,7 @@
 <?php
+require_once '../Application/Libs/Parser.php';
 
-require_once './Models/BaseModel/Parser.php';
-
-class vnexpressParser extends Parser
+class VnexpressParser extends Parser
 {
     protected $regexTitleStart = '/class="title-detail">/';
     protected $regexTitleEnd = '/h1>/';

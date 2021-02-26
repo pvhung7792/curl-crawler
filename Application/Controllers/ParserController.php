@@ -1,6 +1,7 @@
-<?php 
-require_once './lib/Crawler.php';
-require_once './Controllers/BaseController/Controller.php';
+<?php
+
+require_once '../Application/Libs/Crawler.php';
+require_once '../Application/Core/Controller.php';
 
 class ParserController extends Controller
 {
@@ -12,7 +13,8 @@ class ParserController extends Controller
     }
 
     public function parserData(){
-        // Parser url to get website name
+
+        // Application url to get website name
         $url = $_POST['url'];
         $arrayUrl = explode("/", $url);
         $website = explode(".",$arrayUrl[2]);
@@ -23,24 +25,25 @@ class ParserController extends Controller
         }
 
         // Call class base on website
-        $web = $website[0].'Parser';
+        $parser = ucfirst($website[0]).'Parser';
 
-        require_once './Models/'.$web.'.php';
+        require_once '../Application/PageParser/'.$parser.'.php';
+
 
         //change crawler method here
         $crawler = new CurlCrawler();
 
-        $parser = new $web($url, $crawler, PregHtmlForNews);
+        $parser = new $parser($url, $crawler, PregHtmlForNews);
 
         $data = [
             'link'=> $url,
-            'title'=>$parser->getTitle(),
-            'date'=>$parser->getDate(),
-            'content'=>$parser->getContent()
+            'title'=>$parser->getTitle() ? $parser->getTitle() : "no title",
+            'date'=>$parser->getDate() ? $parser->getDate() : "",
+            'content'=>$parser->getContent() ? $parser->getContent() : ""
         ];
 
         // return view
-        $this->view(viewContent ,$data);
+        $this->view(ContentDetail ,$data);
     }   
 
 }
