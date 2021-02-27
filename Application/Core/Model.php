@@ -1,6 +1,12 @@
 <?php
 
-class Table 
+/**
+ * Class Model
+ * Base model of the application
+ * Init connection with database
+ */
+
+class Model
 {
     protected $dbConnect;
 

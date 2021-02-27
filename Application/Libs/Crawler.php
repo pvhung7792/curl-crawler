@@ -1,11 +1,23 @@
-<?php 
+<?php
+
 interface Crawler
 {
     public function crawlData($url);
 }
 
+/**
+ * Class CurlCrawler
+ * Defined function to get data from website with curl
+ */
+
 class CurlCrawler implements Crawler
 {
+
+    /**
+     * @param string $url input url of the website
+     * @return bool|string html of the website by string
+     */
+
     public function crawlData($url)
     {
         $ch = curl_init();

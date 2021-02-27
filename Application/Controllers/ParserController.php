@@ -1,16 +1,20 @@
 <?php
 
 require_once '../Application/Libs/Crawler.php';
-require_once '../Application/Core/Controller.php';
+
+/**
+ * Class ParserController
+ * Current available web site to parser VietNameNet.vn, Dantri.com, VnExpress.net
+ */
 
 class ParserController extends Controller
 {
     private  $list = ["vietnamnet", "dantri", "vnexpress"];
 
-    public function __construct()
-    {
-
-    }
+    /**
+     * parserData function
+     * @return html view combine with parsed data
+     */
 
     public function parserData(){
 
@@ -32,18 +36,17 @@ class ParserController extends Controller
 
         //change crawler method here
         $crawler = new CurlCrawler();
-
         $parser = new $parser($url, $crawler, PregHtmlForNews);
 
         $data = [
             'link'=> $url,
-            'title'=>$parser->getTitle() ? $parser->getTitle() : "no title",
-            'date'=>$parser->getDate() ? $parser->getDate() : "",
-            'content'=>$parser->getContent() ? $parser->getContent() : ""
+            'title'=>$parser->getTitle() ? : "no title",
+            'date'=>$parser->getDate() ? : "",
+            'content'=>$parser->getContent() ? : ""
         ];
 
         // return view
-        $this->view(ContentDetail ,$data);
+        $this->view(ContentDetail, $data);
     }   
 
 }

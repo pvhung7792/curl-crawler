@@ -1,10 +1,21 @@
 <?php
-require_once '../Application/Core/Table.php';
+require_once '../Application/Core/Model.php';
 
+/**
+ * Class PageData
+ * Model to connect with page_data_tb table from database
+ */
 
-class PageData extends Table
+class PageData extends Model
 {
     private $table = "page_data_tb";
+
+    /**
+     * @param array $data
+     * @return bool
+     *
+     * Create query to insert in to page_data_tb table
+     */
 
     public function store($data)
     {

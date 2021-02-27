@@ -1,6 +1,12 @@
 <?php
 require_once '../Application/Libs/Parser.php';
 
+/**
+ * Class VietnamnetParser
+ * Redefine the properties of Parser class with
+ * regex to parser the html data get from website Vietnamnet.vn
+ */
+
 class VietnamnetParser extends Parser
 {
     protected $regexTitleStart = '/class="title f-22 c-3e">/';
@@ -19,3 +25,5 @@ class VietnamnetParser extends Parser
 
 
 ?>
+
+
