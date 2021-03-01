@@ -1,4 +1,5 @@
 <?php
+
 require_once '../Application/Core/Model.php';
 
 /**
@@ -23,13 +24,13 @@ class PageData extends Model
         $arrayData = "'".$data['link']."','".$data['title']."','".$data['date']."','".$data['content']."')";
         $sql = 'INSERT INTO '.$this->table.' (link, title, date, content) VALUES('.$arrayData;
 
+        $dB = self::getInstance();
         //insert data to table
-        if(!$this->dbConnect->query($sql))
+        if(!$dB->query($sql))
         {
             echo "Unable to insert data!";
             exit();
         }
-
         return true;
     }
 }

@@ -1,6 +1,6 @@
 <?php
-require_once '../Application/Models/PageData.php';
 
+require_once '../Application/Models/PageData.php';
 
 class ContentController
 {

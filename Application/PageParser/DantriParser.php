@@ -7,7 +7,6 @@ require_once '../Application/Libs/Parser.php';
  * regex to parser the html data get from website Dantri.com
  */
 
-
 class DantriParser extends Parser
 {
     protected $regexTitleStart = '/class="dt-news__title">/';
@@ -24,4 +23,3 @@ class DantriParser extends Parser
 }
 
 
-?>
