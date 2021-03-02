@@ -9,4 +9,3 @@ define("DB_USER", "hung");
 define("DB_PASS", "123456");
 define("DB_NAME", "curl_parser");
 
-?>
