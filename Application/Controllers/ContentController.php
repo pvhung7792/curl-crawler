@@ -4,7 +4,7 @@ require_once '../Application/Models/PageData.php';
 
 class ContentController
 {
-    protected $table;
+//    protected $table;
     protected $data;
 
     /**

@@ -2,6 +2,7 @@
 
 require_once '../Application/Core/Model.php';
 
+
 /**
  * Class PageData
  * Model to connect with page_data_tb table from database
@@ -20,6 +21,7 @@ class PageData extends Model
 
     public function store($data)
     {
+
         //Create array data to insert
         $arrayData = "'".$data['link']."','".$data['title']."','".$data['date']."','".$data['content']."')";
         $sql = 'INSERT INTO '.$this->table.' (link, title, date, content) VALUES('.$arrayData;

@@ -1,6 +1,7 @@
 <?php
 
 require_once '../Application/Libs/Crawler.php';
+require_once '../Application/Libs/Parser/IncludeParser.php';
 
 /**
  * Class ParserController
@@ -21,22 +22,20 @@ class ParserController extends Controller
         // Application url to get website name
         $url = $_POST['url'];
         $arrayUrl = explode("/", $url);
-        $website = explode(".",$arrayUrl[2]);
+        $website = explode(".",$arrayUrl[2])[0];
 
         //return back if website it not on available list
-        if (!in_array($website[0], $this->list)) {
+        if (!in_array($website, $this->list)) {
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
-
-        // Call class base on website
-        $parser = ucfirst($website[0]).'Parser';
-
-        require_once '../Application/PageParser/'.$parser.'.php';
 
 
         //change crawler method here
         $crawler = new CurlCrawler();
-        $parser = new $parser($url, $crawler, PregHtmlForNews);
+
+        // Call parser class base on website
+        $includeParser = new IncludeParser();
+        $parser = $includeParser->getParser($url, $crawler, $website);
 
         $data = [
             'link'=> $url,

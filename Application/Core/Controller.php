@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class Controller defined base controller class
  */

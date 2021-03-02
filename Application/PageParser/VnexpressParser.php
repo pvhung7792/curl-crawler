@@ -1,5 +1,5 @@
 <?php
-require_once '../Application/Libs/Parser.php';
+require_once '../Application/Libs/Parser/Parser.php';
 
 /**
  * Class VnexpressParser

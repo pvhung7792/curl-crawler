@@ -29,6 +29,6 @@ class Application
 
         //run controller action base on uri
         $action = $this->url_action;
-        $controller->$action();
+        $controller->$action($param = null);
     }
 }

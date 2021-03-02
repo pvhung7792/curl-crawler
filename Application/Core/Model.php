@@ -11,16 +11,9 @@ class Model
     private static $instance = null;
 
     /**
-     * Disable instantiation.
-     */
-
-    function __construct(){
-    }
-
-    /**
      * Create or retrieve the instance of our database client.
      *
-     * @return Database
+     * @return instance
      */
 
     public static function getInstance(){
@@ -53,4 +46,3 @@ class Model
     }
 }
 
-?>
