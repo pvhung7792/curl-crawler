@@ -6,6 +6,11 @@ use PHPUnit\Util\InvalidDataSetException;
 
 class ParserControllerTest extends TestCase
 {
+    /**
+     * Check when input url are not in the available list
+     * will throw an error
+     */
+
     public function testGetParserThrowExceptionWithWebNotOnList()
     {
         $url = 'https://otherweb.com.vn';
@@ -15,6 +20,10 @@ class ParserControllerTest extends TestCase
 
         $parserController->getParser($url);
     }
+
+    /**
+     * Test when input correct url will return an object as required parser class
+     */
 
     public function testGetParserReturnObject()
     {
