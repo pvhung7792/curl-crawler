@@ -3,6 +3,8 @@
  * Class Controller defined base controller class
  */
 
+namespace Core;
+
 class Controller
 {
 
@@ -14,6 +16,6 @@ class Controller
     public function view($view, $_data = [] )
     {
         $data = $_data;
-        require_once '../Application/Views/'.$view.'.php';
+        require_once './Application/Views/'.$view.'.php';
     }
 }

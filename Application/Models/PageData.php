@@ -1,7 +1,6 @@
 <?php
-
-require_once '../Application/Core/Model.php';
-
+namespace Models;
+use Core\Model;
 
 /**
  * Class PageData
@@ -21,12 +20,12 @@ class PageData extends Model
 
     public function store($data)
     {
-
         //Create array data to insert
         $arrayData = "'".$data['link']."','".$data['title']."','".$data['date']."','".$data['content']."')";
         $sql = 'INSERT INTO '.$this->table.' (link, title, date, content) VALUES('.$arrayData;
 
         $dB = self::getInstance();
+
         //insert data to table
         if(!$dB->query($sql))
         {

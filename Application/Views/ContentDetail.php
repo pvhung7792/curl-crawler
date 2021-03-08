@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +9,9 @@
 <body>
 
 
-<form action="../Public/index.php?controller=Content&action=storeContent" method="POST">
+<form action="index.php?controller=Content&action=storeContent" method="POST">
     <button type="submit">Save</button>
-    <button type="button"><a href="../">Return</a></button>
+    <button type="button"><a href="http://localhost/demo/PhpCrawler/">Home Page</a></button>
     <!-- Show link -->
     <?php if(isset($data['link'])): ?>
         <h4>Link</h4>

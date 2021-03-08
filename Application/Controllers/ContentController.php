@@ -1,12 +1,14 @@
 <?php
 
-require_once '../Application/Models/PageData.php';
+use Models\PageData;
+
 
 class ContentController
 {
 //    protected $table;
     protected $data;
 
+    protected $table;
     /**
      * ContentController constructor.
      * Include PageData model
@@ -28,9 +30,9 @@ class ContentController
 
     public function storeContent()
     {
-
         //store data
         $this->table->store($this->data);
+
 
         //redirect back to main page
         header('Location: http://localhost/demo/PhpCrawler/');
@@ -38,4 +40,3 @@ class ContentController
 
 }
 
-?>

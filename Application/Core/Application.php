@@ -1,4 +1,5 @@
 <?php
+namespace Core;
 
 /**
  * Class Application: Bootstrap class of the application
@@ -14,6 +15,11 @@ class Application
 
     public function __construct()
     {
+        if ($_GET == null){
+            require_once './Application/Views/HomePage.php';
+            die();
+        }
+
         // get controller name
         $this->url_controller = $_GET['controller'];
 
@@ -22,13 +28,15 @@ class Application
 
         // Include controller base on uri
         $controllerName = $this->url_controller.'Controller';
-        require_once '../Application/Controllers/'.$controllerName.'.php';
+
+        require_once './Application/Controllers/'.$controllerName.'.php';
 
         //Call controller
         $controller = new $controllerName();
 
         //run controller action base on uri
         $action = $this->url_action;
+
         $controller->$action($param = null);
     }
 }

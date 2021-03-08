@@ -1,5 +1,9 @@
 <?php
-require_once '../Application/Libs/Parser/Parser.php';
+namespace PageParser;
+
+//require_once '../Application/Libs/Parser/Parser.php';
+
+use Libs\Parser\Parser;
 
 /**
  * Class VnexpressParser
@@ -10,16 +14,16 @@ require_once '../Application/Libs/Parser/Parser.php';
 class VnexpressParser extends Parser
 {
     protected $regexTitleStart = '/class="title-detail">/';
-    protected $regexTitleEnd = '/h1>/';
+    protected $regexTitleEnd = '/\<\/h1\>/';
 
     protected $regexArticleStart = '/class="fck_detail/';
-    protected $regexArticleEnd = '/article>/';
+    protected $regexArticleEnd = '/\<\/article\>/';
 
     protected $regexStartContent = '/class="Normal">/';
-    protected $regexEndContent = '/</p>/';
+    protected $regexEndContent = '/\<\/p\>/';
 
     protected $regexStartDate = '/class="date">/';
-    protected $regexEndDate = '/span>/'; 
+    protected $regexEndDate = '/\<\/span\>/';
 
 }
 

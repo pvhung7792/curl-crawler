@@ -6,6 +6,11 @@
  * Init connection with database
  */
 
+namespace Core;
+
+
+use Exception;
+
 class Model
 {
     private static $instance = null;
@@ -13,14 +18,36 @@ class Model
     /**
      * Create or retrieve the instance of our database client.
      *
-     * @return instance
+     * @return object
      */
 
     public static function getInstance(){
+
         if(self::$instance == null){
-            self::$instance = new mysqli(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+            try {
+                self::$instance = self::connectDataBase();
+            }catch (Exception $e){
+                echo $e->getMessage();
+                die();
+            }
         }
         return self::$instance;
+    }
+
+    /**
+     * @return \mysqli connection
+     * @throws Exception
+     */
+
+    private function connectDataBase(){
+
+        $conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
+
+        if (!$conn){
+            throw new Exception('Cant connect to database');
+        }
+
+        return $conn;
     }
 
     /**

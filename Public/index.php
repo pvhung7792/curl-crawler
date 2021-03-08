@@ -9,6 +9,7 @@ require_once '../Application/Config/Config.php';
 //Include bootstrap file to run application
 require_once '../Application/Core/Application.php';
 
+require_once '../vendor/autoload.php';
 //Include base controller
 require_once '../Application/Core/Controller.php';
 
@@ -18,4 +19,3 @@ require_once '../Application/Core/Controller.php';
 
 $app = new Application();
 
-?>

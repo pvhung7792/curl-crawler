@@ -1,7 +1,10 @@
 <?php
+namespace Controllers;
 
-require_once '../Application/Libs/Crawler.php';
-require_once '../Application/Libs/Parser/IncludeParser.php';
+use Libs\Crawler\CurlCrawler;
+use Libs\Parser\ParserFactory;
+use Core\Controller;
+use PHPUnit\Util\InvalidDataSetException;
 
 /**
  * Class ParserController
@@ -10,32 +13,23 @@ require_once '../Application/Libs/Parser/IncludeParser.php';
 
 class ParserController extends Controller
 {
-    private  $list = ["vietnamnet", "dantri", "vnexpress"];
+    private $list = ["vietnamnet", "dantri", "vnexpress"];
 
     /**
      * parserData function
-     * @return html view combine with parsed data
+     * @return array
+     * show view combine with parsed data
      */
 
     public function parserData(){
-
-        // Application url to get website name
         $url = $_POST['url'];
-        $arrayUrl = explode("/", $url);
-        $website = explode(".",$arrayUrl[2])[0];
 
-        //return back if website it not on available list
-        if (!in_array($website, $this->list)) {
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        try {
+            $parser = $this->getParser($url);
+        }catch (InvalidDataSetException $e){
+            echo $e->getMessage();
+            die();
         }
-
-
-        //change crawler method here
-        $crawler = new CurlCrawler();
-
-        // Call parser class base on website
-        $includeParser = new IncludeParser();
-        $parser = $includeParser->getParser($url, $crawler, $website);
 
         $data = [
             'link'=> $url,
@@ -46,7 +40,28 @@ class ParserController extends Controller
 
         // return view
         $this->view(ContentDetail, $data);
-    }   
+    }
+
+    public function getParser($url)
+    {
+        // Application url to get website name
+        $arrayUrl = explode("/", $url);
+        $website = explode(".",$arrayUrl[2])[0];
+
+        //return back if website it not on available list
+        if (!in_array($website, $this->list)) {
+            throw new InvalidDataSetException('Website are not in the list');
+        }
+
+        //change crawler method here
+        $crawler = new CurlCrawler();
+
+        // Call parser class base on website
+        $includeParser = new ParserFactory();
+        return $parser = $includeParser->getParser($url, $crawler, $website);
+    }
+
+
 
 }
 

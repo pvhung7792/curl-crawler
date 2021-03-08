@@ -1,5 +1,5 @@
 <?php
-
+namespace Libs\Parser;
 /**
  * Class Parser
  * Defined function to get different component of the website
@@ -89,7 +89,7 @@ class Parser
     {
         $temp = preg_split($start, $html);
         $content = preg_split($end, $temp[1]);
-        return substr(trim($content[0]), 0 ,-2);
+        return trim($content[0]);
     }
 
     /**
