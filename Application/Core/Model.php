@@ -44,7 +44,7 @@ class Model
         $conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 
         if (!$conn){
-            throw new Exception('Cant connect to database');
+            return false;
         }
 
         return $conn;

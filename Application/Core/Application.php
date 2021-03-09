@@ -36,7 +36,8 @@ class Application
 
         //run controller action base on uri
         $action = $this->url_action;
+        $param = isset($_POST)? $_POST : '' ;
 
-        $controller->$action($param = null);
+        $controller->$action($param);
     }
 }

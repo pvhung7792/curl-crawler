@@ -1,12 +1,11 @@
 <?php
 
 use Models\PageData;
+use Core\Controller;
 
-
-class ContentController
+class ContentController extends Controller
 {
 //    protected $table;
-    protected $data;
 
     protected $table;
     /**
@@ -16,11 +15,10 @@ class ContentController
      * @return void
      */
 
-    public function __construct()
-    {
-        $this->table = new PageData();
-        $this->data = $_POST;
-    }
+//    public function __construct()
+//    {
+//        $this->table = new PageData();
+//    }
 
     /**
      * function storeContent
@@ -28,14 +26,15 @@ class ContentController
      * redirect back to home page
      */
 
-    public function storeContent()
+    public function storeContent($data)
     {
+        $pageData = new PageData();
         //store data
-        $this->table->store($this->data);
-
+        $pageData->store($data);
 
         //redirect back to main page
-        header('Location: http://localhost/demo/PhpCrawler/');
+        //header('Location: http://localhost/demo/PhpCrawler/');
+        $this->view('HomePage');
     }
 
 }

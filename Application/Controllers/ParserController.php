@@ -1,5 +1,4 @@
 <?php
-namespace Controllers;
 
 use Libs\Crawler\CurlCrawler;
 use Libs\Parser\ParserFactory;
@@ -21,9 +20,8 @@ class ParserController extends Controller
      * show view combine with parsed data
      */
 
-    public function parserData(){
-        $url = $_POST['url'];
-
+    public function parserData($data){
+        $url = $data['url'];
         try {
             $parser = $this->getParser($url);
         }catch (InvalidDataSetException $e){
@@ -41,6 +39,11 @@ class ParserController extends Controller
         // return view
         $this->view(ContentDetail, $data);
     }
+
+    /**
+     * @param $url
+     * @return false or a PageParser
+     */
 
     public function getParser($url)
     {
@@ -60,8 +63,6 @@ class ParserController extends Controller
         $includeParser = new ParserFactory();
         return $parser = $includeParser->getParser($url, $crawler, $website);
     }
-
-
 
 }
 

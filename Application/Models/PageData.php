@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 use Core\Model;
-
+use Exception;
 /**
  * Class PageData
  * Model to connect with page_data_tb table from database
@@ -10,6 +10,12 @@ use Core\Model;
 class PageData extends Model
 {
     private $table = "page_data_tb";
+    private $dB;
+
+    public function connectDb()
+    {
+        $this->dB = self::getInstance();
+    }
 
     /**
      * @param array $data
@@ -24,15 +30,10 @@ class PageData extends Model
         $arrayData = "'".$data['link']."','".$data['title']."','".$data['date']."','".$data['content']."')";
         $sql = 'INSERT INTO '.$this->table.' (link, title, date, content) VALUES('.$arrayData;
 
-        $dB = self::getInstance();
-
+        $this->connectDb();
         //insert data to table
-        if(!$dB->query($sql))
-        {
-            echo "Unable to insert data!";
-            exit();
-        }
-        return true;
+
+        return $this->dB->query($sql);
     }
 }
 

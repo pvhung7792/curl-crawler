@@ -1,8 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-
-use Controllers\ParserController;
 use PHPUnit\Util\InvalidDataSetException;
+require_once './Application/Controllers/ParserController.php';
 
 class ParserControllerTest extends TestCase
 {
